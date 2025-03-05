@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Cá Nhân</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </head>
 <body>
     <h1>Thông Tin Cá Nhân</h1>
@@ -26,7 +36,8 @@
     </div>
     <div class="info">
         <span class="label">Hình Ảnh:</span>
-        <img src="D:/duyphuong.jpg" alt="Hình ảnh cá nhân">
+        <input type="file" accept="image/*" onchange="previewImage(event)">
+        <img id="imagePreview" alt="Hình ảnh cá nhân" style="display: block; margin-top: 10px;">
     </div>
 </body>
 </html>
